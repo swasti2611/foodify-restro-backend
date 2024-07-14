@@ -137,6 +137,9 @@ app.get("/logout",(req,res,next)=>{
         res.redirect("http://localhost:3000");
     })
 })
+app.get("/",(req,res)=>{
+  res.send("hello")
+})
 app.use("/",route)
 
 
