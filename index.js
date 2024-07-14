@@ -22,11 +22,7 @@ mongoose.connect("mongodb+srv://swati2611:1488rCJ3VcxGXXpT@cluster0.giiopqv.mong
 
 
 
-app.use(cors({
-    origin:"https://quiet-cheesecake-280d10.netlify.app",
-    methods:"GET,POST,PUT,DELETE",
-    credentials:true
-}));
+app.use(cors());
 app.use(express.json());
 
 // setup session
@@ -82,8 +78,8 @@ passport.deserializeUser((user,done)=>{
 app.get("/auth/google",passport.authenticate("google",{scope:["profile","email"]}));
 
 app.get("/auth/google/callback",passport.authenticate("google",{
-    successRedirect:"https://quiet-cheesecake-280d10.netlify.app",
-    failureRedirect:"https://quiet-cheesecake-280d10.netlify.app/login"
+    successRedirect:"https://snazzy-basbousa-a6645b.netlify.app",
+    failureRedirect:"https://snazzy-basbousa-a6645b.netlify.app/login"
 }))
 app.get("/login/sucess",async(req,res)=>{
     
@@ -134,7 +130,7 @@ const transporter = nodemailer.createTransport({
 app.get("/logout",(req,res,next)=>{
     req.logout(function(err){
         if(err){return next(err)}
-        res.redirect("https://quiet-cheesecake-280d10.netlify.app");
+        res.redirect("https://snazzy-basbousa-a6645b.netlify.app");
     })
 })
 app.get("/",(req,res)=>{
