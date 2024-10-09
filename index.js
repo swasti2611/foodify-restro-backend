@@ -25,15 +25,16 @@ app.use(cors({
   credentials: true
 }));
 
-app.use(express.json());
+
 
 // Setup session
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'your_default_secret',
+  secret: process.env.SESSION_SECRET ,
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: false
 }));
-
+app.use(express.json());
+app.use(express.urlencoded({extended:false}))
 // Initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
@@ -42,11 +43,11 @@ app.use(passport.session());
 passport.use(new OAuth2Strategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: "/auth/google/callback",
+  callbackURL: "https://zomato-clone-psi-six.vercel.app/auth/google/callback",
   scope: ["profile", "email"]
 }, async (accessToken, refreshToken, profile, done) => {
   try {
-      let user = await userdb.findOne({ googleId: profile.id });
+      let user = await userdb.findOne({ googleId: profile.id } );
       if (!user) {
           user = new userdb({
               googleId: profile.id,
