@@ -19,7 +19,11 @@ mongoose.connect("mongodb+srv://swati2611:1488rCJ3VcxGXXpT@cluster0.giiopqv.mong
     console.log("error")
 })
 
-app.use(cors());
+app.use(cors({
+  origin: "https://zomato-clone-psi-six.vercel.app",
+  methods: "GET,POST,PUT,DELETE",
+  credentials: true
+}));
 
 
 
