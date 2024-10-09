@@ -31,9 +31,13 @@ app.use(express.json());
 
 // Setup session
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'your_default_secret', // Use a default secret for development
-    resave: false,
-    saveUninitialized: true
+  secret:'default_secret_key', // Ensure this is set
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    secure: true, // Set to true if you are serving over HTTPS
+    sameSite: 'none' // This allows cookies to be sent cross-site
+  }
 }));
 
 // Initialize passport
