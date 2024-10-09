@@ -12,9 +12,8 @@ const port=process.env.PORT  || 8080
 
 mongoose.connect("mongodb+srv://swati2611:1488rCJ3VcxGXXpT@cluster0.giiopqv.mongodb.net/FeastFinder?retryWrites=true&w=majority&appName=Cluster0")
 .then((res)=>{
-    
+   
     console.log("mongodb connected");
-    
 }).catch((err)=>{
     console.log(err)
     console.log("error")
@@ -44,7 +43,7 @@ app.use(passport.session());
 passport.use(new OAuth2Strategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: "https://zomato-clone-psi-six.vercel.app/auth/google/callback",
+  callbackURL: "/auth/google/callback",
   scope: ["profile", "email"]
 }, async (accessToken, refreshToken, profile, done) => {
   try {
