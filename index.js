@@ -15,6 +15,7 @@ const port = process.env.PORT || 8080;
 mongoose.connect("mongodb+srv://swati2611:1488rCJ3VcxGXXpT@cluster0.giiopqv.mongodb.net/FeastFinder?retryWrites=true&w=majority&appName=Cluster0")
     .then(() => {
         console.log("MongoDB connected");
+        
     })
     .catch((err) => {
         console.log("MongoDB connection error:", err);
