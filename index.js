@@ -22,9 +22,13 @@ mongoose.connect("mongodb+srv://swati2611:1488rCJ3VcxGXXpT@cluster0.giiopqv.mong
 
 
 
-app.use(cors());
-app.use(express.json());
-
+app.use(cors({
+  origin: 'https://zomato-clone-psi-six.vercel.app',  // Replace with your frontend domain
+  methods: 'GET,POST',  // Specify allowed methods (optional)
+  credentials: true }  
+));
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 // setup session
 app.use(session({
     secret:"1234secreatkey",
