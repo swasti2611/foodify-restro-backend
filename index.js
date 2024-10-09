@@ -78,8 +78,8 @@ passport.deserializeUser((user,done)=>{
 app.get("/auth/google",passport.authenticate("google",{scope:["profile","email"]}));
 
 app.get("/auth/google/callback",passport.authenticate("google",{
-    successRedirect:"https://snazzy-basbousa-a6645b.netlify.app",
-    failureRedirect:"https://snazzy-basbousa-a6645b.netlify.app/login"
+    successRedirect:"https://zomato-clone-psi-six.vercel.app",
+    failureRedirect:"https://zomato-clone-psi-six.vercel.app/login"
 }))
 app.get("/login/sucess",async(req,res)=>{
     
@@ -130,7 +130,7 @@ const transporter = nodemailer.createTransport({
 app.get("/logout",(req,res,next)=>{
     req.logout(function(err){
         if(err){return next(err)}
-        res.redirect("https://snazzy-basbousa-a6645b.netlify.app");
+        res.redirect("https://zomato-clone-psi-six.vercel.app");
     })
 })
 app.get("/",(req,res)=>{
