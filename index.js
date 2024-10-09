@@ -44,7 +44,7 @@ app.use(passport.session());
 passport.use(new OAuth2Strategy({
     clientID: process.env.CLIENT_ID, // Use environment variables for sensitive info
     clientSecret: process.env.CLIENT_SECRET, // Use environment variables for sensitive info
-    callbackURL: "/auth/google/callback",
+    callbackURL: "https://zomato-clone-psi-six.vercel.app/auth/google/callback",
     scope: ["profile", "email"]
 },
 async (accessToken, refreshToken, profile, done) => {
