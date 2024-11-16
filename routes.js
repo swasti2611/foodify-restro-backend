@@ -7,7 +7,7 @@ const getMealtypesController = require('./Controllers/Mealtype');
 const getLocationController = require('./Controllers/Location');
 const { filterRestaurants, getRestaurantsByLocation, getRestaurantDetailById } = require('./Controllers/Restaurants');
 const menuController = require('./Controllers/menuItem');
-
+const { signIn, logIn }=require("./Controllers/user")
 // Define your API endpoints
 router.get('/api/locations', getLocationController);
 router.get('/api/mealtypes', getMealtypesController);
@@ -15,7 +15,8 @@ router.get('/api/restaurantByLocation/:locId', getRestaurantsByLocation);
 router.get('/api/restaurantById/:resId', getRestaurantDetailById);
 router.get('/api/menuitems/:resId', menuController.getMenuItemsByRestaurant);
 router.post('/api/filter', filterRestaurants);
-
+router.post("/signIn",signIn)
+router.post("/login",logIn)
 // Payment endpoint
 router.post("/api/order", async (req, res) => {
   try {
