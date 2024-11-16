@@ -15,8 +15,9 @@ router.get('/api/restaurantByLocation/:locId', getRestaurantsByLocation);
 router.get('/api/restaurantById/:resId', getRestaurantDetailById);
 router.get('/api/menuitems/:resId', menuController.getMenuItemsByRestaurant);
 router.post('/api/filter', filterRestaurants);
-router.post("/signIn",signIn)
+
 router.post("/login",logIn)
+router.post("/signIn",signIn)
 // Payment endpoint
 router.post("/api/order", async (req, res) => {
   try {
