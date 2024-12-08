@@ -20,10 +20,10 @@ mongoose.connect("mongodb+srv://swati2611:1488rCJ3VcxGXXpT@cluster0.giiopqv.mong
     .catch((err) => {
         console.log("MongoDB connection error:", err);
     });
-
+ 
 // CORS setup
 app.use(cors({
-    origin: "https://zomato-clone-livid-alpha.vercel.app",
+    origin: "https://foodify-restro.vercel.app",
     methods: "GET,POST,PUT,DELETE",
     credentials: true
 }));
@@ -49,7 +49,7 @@ app.use(passport.session());
 passport.use(new OAuth2Strategy({
     clientID: process.env.CLIENT_ID, // Use environment variables for sensitive info
     clientSecret: process.env.CLIENT_SECRET, // Use environment variables for sensitive info
-    callbackURL: "https://zomato-clone-livid-alpha.vercel.app/auth/google/callback",
+    callbackURL: "https://foodify-restro.vercel.app/auth/google/callback",
     scope: ["profile", "email"]
 },
 async (accessToken, refreshToken, profile, done) => {
@@ -84,8 +84,8 @@ passport.deserializeUser((user, done) => {
 app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 
 app.get("/auth/google/callback", passport.authenticate("google", {
-    successRedirect: "https://zomato-clone-livid-alpha.vercel.app",
-    failureRedirect: "https://zomato-clone-livid-alpha.vercel.app/login"
+    successRedirect: "https://foodify-restro.vercel.app",
+    failureRedirect: "https://foodify-restro.vercel.app/login"
 }));
 
 // Success login route
@@ -101,7 +101,7 @@ app.get("/login/sucess", async (req, res) => {
 app.get("/logout", (req, res, next) => {
     req.logout(function (err) {
         if (err) { return next(err); }
-        res.redirect("https://zomato-clone-livid-alpha.vercel.app");
+        res.redirect("https://foodify-restro.vercel.app");
     });
 });
 
